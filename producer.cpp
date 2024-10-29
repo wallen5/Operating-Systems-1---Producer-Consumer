@@ -29,9 +29,9 @@ int main()
 
     buffer = (int *)mmap(0, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, shared_memory_file_descriptor, 0);
 
-    fill = sem_open(fillSem, O_CREAT, 0666, 0); // 0, as No Items are in the buffer initially
+    fill = sem_open(fillSem, O_CREAT, 0666, 0);   // 0, as No Items are in the buffer initially
 
-    ready = sem_open(avail, O_CREAT, 0666, 3);   // 3, 3 slots are available
+    ready = sem_open(avail, O_CREAT, 0666, 3);    // 3, 3 slots are available
 
     mutex = sem_open(mutexSem, O_CREAT, 0666, 1); // 1, one process may access at a time
 
@@ -47,7 +47,7 @@ int main()
         // limit table size
         if (*buffer < SIZE)
         {
-            (*buffer)++; //added an item to the buffer
+            (*buffer)++;      //added an item to the buffer
             std::cout << "Produced an item!" << std::endl;
             sem_post(mutex); // release the lock on critical section
             sem_post(fill);  // send that semaphore is open
