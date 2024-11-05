@@ -10,6 +10,6 @@ EXECUTING THE PROGRAM -
 Enter these three lines in program terminal consecutively. 
 Linux/Unix system required.
 
-$ gcc producer.c -pthread -lrt -o producer
-$ gcc consumer.c -pthread -lrt -o consumer
+g++ producer.c -pthread -lrt -o producer
+g++ consumer.c -pthread -lrt -o consumer
 $ ./producer & ./consumer &
